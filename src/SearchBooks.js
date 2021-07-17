@@ -22,7 +22,7 @@ class SearchBooks extends Component {
       searchQuery: searchQuery.trim(),
     }));
 
-    if (searchQuery) {
+    if (searchQuery && (searchQuery !== ' ')) {
       BooksAPI.search(searchQuery.trim(), 20).then((books) => {
         if (books.length > 0) {
           this.setState(() => ({
