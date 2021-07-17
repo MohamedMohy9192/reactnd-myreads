@@ -23,24 +23,12 @@ class BooksApp extends React.Component {
       //updatae book shelf
       booktoUpdate.shelf = shelf;
       //filter the books from the passed in book, update the bookshelf and add the book again to the books
-      const newBooks = this.state.books
-        .filter((book) => book.id !== booktoUpdate.id)
-        .concat(booktoUpdate);
-
-        //update the state with the new books
-      this.setState(() => ({
-        book: newBooks,
+      this.setState((currentState) => ({
+        books: currentState.books
+          .filter((book) => book.id !== booktoUpdate.id)
+          .concat(booktoUpdate),
       }));
-
-      //update search page after change the book shelf
-      BooksAPI.getAll().then((books) => {
-        this.setState(() => ({
-          books: books,
-        }));
-      });
     });
-
-   
   };
 
   render() {
@@ -49,12 +37,22 @@ class BooksApp extends React.Component {
         <Route
           exact
           path='/'
-          render={() => <ListBooks books={this.state.books} onUpdateBookShelf={this.updateBookShelf} />}
+          render={() => (
+            <ListBooks
+              books={this.state.books}
+              onUpdateBookShelf={this.updateBookShelf}
+            />
+          )}
         />
 
         <Route
           path='/search'
-          render={() => <SearchBooks books={this.state.books}  onUpdateBookShelf={this.updateBookShelf} />}
+          render={() => (
+            <SearchBooks
+              books={this.state.books}
+              onUpdateBookShelf={this.updateBookShelf}
+            />
+          )}
         />
       </div>
     );
