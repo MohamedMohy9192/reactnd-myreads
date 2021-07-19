@@ -19,10 +19,10 @@ class SearchBooks extends Component {
     console.log('serachQuery', event);
     const searchQuery = event.target.value;
     this.setState(() => ({
-      searchQuery: searchQuery.trim(),
+      searchQuery: searchQuery,
     }));
 
-    if (searchQuery && (searchQuery !== ' ')) {
+    if (searchQuery && searchQuery !== ' ') {
       BooksAPI.search(searchQuery.trim(), 20).then((books) => {
         if (books.length > 0) {
           this.setState(() => ({
@@ -40,8 +40,6 @@ class SearchBooks extends Component {
   render() {
     const { searchQuery, searchBooks } = this.state;
     const { onUpdateBookShelf, books } = this.props;
-
-    console.log('searchBooks', searchBooks);
 
     return (
       <div className='search-books'>
@@ -63,13 +61,15 @@ class SearchBooks extends Component {
             {searchBooks.map((searchBook) => {
               console.log('searchBookBefore', searchBook);
               let newBookShelf = 'none';
-              books.map((myBook) =>
-                myBook.id === searchBook.id ? (newBookShelf = myBook.shelf) : ''
-              );
-              console.log('searchBookBeforeAfter', searchBook);
+              for (const book of books) {
+                if (book.id === searchBook.id) {
+                  newBookShelf = book.shelf;
+                  break;
+                }
+              }
 
               return (
-                <li id={searchBook.id}>
+                <li key={searchBook.id}>
                   <Book
                     onUpdateBookShelf={onUpdateBookShelf}
                     book={searchBook}
