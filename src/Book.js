@@ -7,14 +7,10 @@ class Book extends Component {
     onUpdateBookShelf: PropTypes.func.isRequired,
   };
 
-  state = {
-    bookShelf: ''
-  }
-
   render() {
-    const { onUpdateBookShelf, book, bookShelf} = this.props;
+    const { onUpdateBookShelf, book, bookShelf } = this.props;
 
-    //console.log('bookIn Book', book);
+    const bookThumbnail = book.imageLinks ? book.imageLinks.thumbnail : '';
     return (
       <div className='book'>
         <div className='book-top'>
@@ -23,17 +19,15 @@ class Book extends Component {
             style={{
               width: 128,
               height: 193,
-              backgroundImage: `url(${book.imageLinks.thumbnail})`,
+              backgroundImage: `url(${bookThumbnail})`,
             }}
           />
           <div className='book-shelf-changer'>
             <select
               value={bookShelf}
               onChange={(event) => {
-                onUpdateBookShelf(book, event.target.value)
-                console.log('event.target.value',  event.target.value)
-              }
-             }
+                onUpdateBookShelf(book, event.target.value);
+              }}
             >
               <option value='move' disabled>
                 Move to...
