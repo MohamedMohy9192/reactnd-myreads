@@ -21,5 +21,5 @@
 
 ## Screenshots
 
-
+<img src="screenshots/shelves page.png" alt="Shelves Page" width="400"/> <img src="screenshots/search page.png" alt="Search Page" width="400"/>
 
