@@ -16,7 +16,7 @@
 
 * [React](https://github.com/facebook/react)
 * [Redux](https://github.com/reduxjs/redux)
-* [React Router Dom](https://github.com/reduxjs/redux-thunk)
+* [React Router Dom](https://github.com/remix-run/react-router)
 * [Prop-types](https://github.com/remix-run/react-router)
 
 ## Screenshots
