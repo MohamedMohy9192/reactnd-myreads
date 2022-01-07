@@ -7,8 +7,19 @@
 
 ### Installing
 
-**How to start**
 1. Clone the project using `$ git clone `.
 2. Navigate to the root directory for the project.
 3. In Terminal install all project dependencies with `npm install`.
 3. Start the development server with `npm start`.
+
+## Dependencies
+
+* [React](https://github.com/facebook/react)
+* [Redux](https://github.com/reduxjs/redux)
+* [Redux-thunk](https://github.com/reduxjs/redux-thunk)
+* [Prop-types](https://github.com/remix-run/react-router)
+
+## Screenshots
+
+
+
